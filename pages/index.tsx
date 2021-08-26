@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import { ContrastChecker } from "../stories/ContrastChecker";
+import ContrastChecker from "../stories/ContrastChecker";
 
 export default function Home(props: { label: string }) {
   return (
@@ -11,7 +11,7 @@ export default function Home(props: { label: string }) {
       </Head>
 
       <main className={styles.main}>
-        <ContrastChecker></ContrastChecker>
+        <ContrastChecker colorName={props.label} colorHex="#55468c"></ContrastChecker>
       </main>
     </div>
   );

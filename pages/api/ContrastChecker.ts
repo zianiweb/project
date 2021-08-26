@@ -2,11 +2,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  Hex: string,
-  Rgb: any,
-  Cmyk: any,
-  Dark: string,
-  Light: string
+  colorHex: string,
+  colorRgb: string,
+  colorCmyk: string,
+  darkRatio: string,
+  lightRatio: string
 }
 
 const hexToRgb = (hex: string) => {
@@ -86,13 +86,16 @@ const calcRatio = (foreground: string, background: string) => {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   const hexColor = req.body.Hex;
+  const colorRgb = hexToRgb(hexColor);
+  const colorCmyk = hexToCMYK(hexColor);
 
   const data = { 
-    Hex: hexColor,
-    Rgb: hexToRgb(hexColor),
-    Cmyk: hexToCMYK(hexColor),
-    Dark: calcRatio('#000000', hexColor),
-    Light: calcRatio('#FFFFFF', hexColor)
+    colorHex: hexColor,
+    colorRgb: `${(`${colorRgb.r}`).padStart(3,'0')}-${(`${colorRgb.g}`).padStart(3,'0')}-${(`${colorRgb.b}`).padStart(3,'0')}`,
+    colorCmyk: `${(`${colorCmyk.C}`).padStart(3,'0')}-${(`${colorCmyk.M}`).padStart(3,'0')}-${(`${colorCmyk.Y}`).padStart(3,'0')}-${(`${colorCmyk.K}`).padStart(3,'0')}`,
+    darkRatio: calcRatio('#000000', hexColor),
+    lightRatio: calcRatio('#FFFFFF', hexColor),
+    pantone: 'Not supported yet!'
   };
 
   res.status(200).json(data)
