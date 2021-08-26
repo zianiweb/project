@@ -1,7 +1,7 @@
 import React from "react";
 
 // Separate local imports from dependencies
-import { Crad, HeaderCrad, BodyCrad, TestColor } from "./stitches/Card";
+import { Crad, HeaderCrad, BodyCrad, LoadingCard, TestColor } from "./stitches/Card";
 
 export default class ContrastChecker extends React.Component<any, any> {
   // Initialize state here (ES7) or in a constructor method (ES6)
@@ -16,7 +16,8 @@ export default class ContrastChecker extends React.Component<any, any> {
       colorName: props.colorName,
       colorCmyk: '',
       darkRatio: '',
-      lightRatio: ''
+      lightRatio: '',
+      loaded: false
     };
   }
 
@@ -33,8 +34,9 @@ export default class ContrastChecker extends React.Component<any, any> {
     })
     .then(response => response.json())
     .then(response => {
-      console.log(response);
       this.setState(response);
+      this.setState({loaded: true});
+
     })
     .catch(err => {
       alert(err);
@@ -44,7 +46,7 @@ export default class ContrastChecker extends React.Component<any, any> {
   render() {
     return (
       <Crad>
-        <HeaderCrad>
+        <HeaderCrad css={{ backgroundColor: this.state.colorHex }}>
           <h3>{this.state.colorName}</h3>
           <ul>
             <li className="dark">
@@ -81,6 +83,14 @@ export default class ContrastChecker extends React.Component<any, any> {
             </li>
           </ul>
         </BodyCrad>
+        {
+          !this.state.loaded && 
+          <LoadingCard>
+            <svg className="spinner" viewBox="0 0 50 50">
+              <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="5"></circle>
+            </svg>
+          </LoadingCard>
+        }
       </Crad>
     );
   }

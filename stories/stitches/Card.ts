@@ -5,6 +5,7 @@ export const Crad = styled("div", {
   position: "relative",
   display: "flex",
   flexDirection: "column",
+  margin: "5px",
   backgroundColor: "#fff",
   border: "1px solid rgba(0,0,0,.125)",
   borderRadius: ".2rem",
@@ -12,7 +13,6 @@ export const Crad = styled("div", {
 });
   
 export const HeaderCrad = styled("div", {
-  backgroundColor: "blueviolet",
   padding: "20px",
   [`& h3`]: {
     color: "white",
@@ -95,3 +95,9 @@ export const TestColor = styled("span", {
   },
 });
   
+export const LoadingCard = styled("span", {
+  position: "absolute",
+  background: "whitesmoke",
+  width: "100%",
+  height: "100%"
+});

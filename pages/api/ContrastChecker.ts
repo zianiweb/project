@@ -47,10 +47,10 @@ const hexToCMYK = (hex: string) => {
     computedC = parseFloat(((computedC - minCMY) / (1 - minCMY)).toFixed(2)) * 100;
     computedM = parseFloat(((computedM - minCMY) / (1 - minCMY)).toFixed(2)) * 100;
     computedY = parseFloat(((computedY - minCMY) / (1 - minCMY)).toFixed(2)) * 100;
-    computedK = parseFloat((minCMY).toFixed(2)) * 100;  
+    computedK = parseFloat((minCMY).toFixed(2)) * 100;
   }  
  
-  return { C: computedC, M: computedM, Y: computedY, K: computedK };
+  return { C: Math.floor(computedC), M: Math.floor(computedM), Y: Math.floor(computedY), K: Math.floor(computedK) };
 }
 
 const luminance = (r: number, g: number, b: number) => {
@@ -90,7 +90,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
   const colorCmyk = hexToCMYK(hexColor);
 
   const data = { 
-    colorHex: hexColor,
+    colorHex: hexColor.toUpperCase(),
     colorRgb: `${(`${colorRgb.r}`).padStart(3,'0')}-${(`${colorRgb.g}`).padStart(3,'0')}-${(`${colorRgb.b}`).padStart(3,'0')}`,
     colorCmyk: `${(`${colorCmyk.C}`).padStart(3,'0')}-${(`${colorCmyk.M}`).padStart(3,'0')}-${(`${colorCmyk.Y}`).padStart(3,'0')}-${(`${colorCmyk.K}`).padStart(3,'0')}`,
     darkRatio: calcRatio('#000000', hexColor),

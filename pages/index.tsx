@@ -3,15 +3,17 @@ import styles from "../styles/Home.module.css";
 
 import ContrastChecker from "../stories/ContrastChecker";
 
-export default function Home(props: { label: string }) {
+export default function Home(props: { colors: any[] }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Hello Worlds</title>
+        <title>Contrast Checker</title>
       </Head>
 
       <main className={styles.main}>
-        <ContrastChecker colorName={props.label} colorHex="#55468c"></ContrastChecker>
+        {
+           props.colors.map(el => <ContrastChecker colorName={el.colorName} colorHex={el.colorHex}></ContrastChecker>)
+        }
       </main>
     </div>
   );
@@ -19,7 +21,15 @@ export default function Home(props: { label: string }) {
 
 export const getStaticProps = () => {
   return {
-    props: { label: "test" }, // will be passed to the page component as props
+    props: { 
+      //colors to test
+      colors: [
+        { colorHex: '#007bff', colorName: 'Primary Color' },
+        { colorHex: '#17a2b8', colorName: 'Info Color' },
+        { colorHex: '#ffc107', colorName: 'Warning Color' },
+        { colorHex: '#dc3545', colorName: 'Danger Color' }
+      ] 
+    },
   };
 };
 
