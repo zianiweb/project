@@ -11,13 +11,6 @@ export const Crad = styled("div", {
   borderRadius: ".2rem",
   width: "320px",
   minHeight: "450px",
-  ['$ p']: {
-    position: "absolute",
-    top: "45%",
-    width: "100%",
-    fontWeight: "500",
-    color: "#dc3545"
-  }
 });
   
 export const HeaderCrad = styled("div", {
@@ -108,5 +101,13 @@ export const LoadingCard = styled("span", {
   position: "absolute",
   background: "whitesmoke",
   width: "100%",
-  height: "100%"
+  height: "100%",
+  ['& p']: {
+    position: "absolute",
+    textAlign: "center",
+    top: "45%",
+    width: "100%",
+    fontWeight: "500",
+    color: "rgba(0, 0, 0, 0.4)"
+  }
 });

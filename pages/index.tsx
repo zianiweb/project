@@ -27,7 +27,7 @@ export const getStaticProps = () => {
         { colorHex: '#275165', colorName: 'Primary Color' },
         { colorHex: '#4079a2', colorName: 'Info Color' },
         { colorHex: '#178db3', colorName: 'Warning Color' },
-        { colorHex: 'd63900', colorName: 'Danger Color' }
+        { colorHex: '#d63900', colorName: 'Danger Color' }
       ] 
     },
   };
