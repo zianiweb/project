@@ -24,10 +24,10 @@ export const getStaticProps = () => {
     props: { 
       //colors to test
       colors: [
-        { colorHex: '#007bff', colorName: 'Primary Color' },
-        { colorHex: '#17a2b8', colorName: 'Info Color' },
-        { colorHex: '#ffc107', colorName: 'Warning Color' },
-        { colorHex: '#dc3545', colorName: 'Danger Color' }
+        { colorHex: '#275165', colorName: 'Primary Color' },
+        { colorHex: '#4079a2', colorName: 'Info Color' },
+        { colorHex: '#178db3', colorName: 'Warning Color' },
+        { colorHex: 'd63900', colorName: 'Danger Color' }
       ] 
     },
   };

@@ -10,10 +10,19 @@ export const Crad = styled("div", {
   border: "1px solid rgba(0,0,0,.125)",
   borderRadius: ".2rem",
   width: "320px",
+  minHeight: "450px",
+  ['$ p']: {
+    position: "absolute",
+    top: "45%",
+    width: "100%",
+    fontWeight: "500",
+    color: "#dc3545"
+  }
 });
   
 export const HeaderCrad = styled("div", {
   padding: "20px",
+  borderBottom: "1px solid rgba(0,0,0,.125)",
   [`& h3`]: {
     color: "white",
     fontSize: "25px",
